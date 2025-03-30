@@ -1,0 +1,71 @@
+{
+    "hardware": {
+        "cpu_cores": 6,
+        "gpu_memory_fraction": 0.8,
+        "use_gpu": true,
+        "use_arm_optimization": true,
+        "tensor_cores_enabled": true
+    },
+    "paths": {
+        "templates_dir": "data/templates",
+        "roi_mappings_dir": "data/roi_mappings",
+        "models_dir": "models"
+    },
+    "performance": {
+        "max_processing_time_ms": 500,
+        "target_classification_time_ms": 50,
+        "target_template_matching_time_ms": 100,
+        "target_ocr_time_ms": 300,
+        "caching_enabled": true,
+        "cache_size_mb": 512,
+        "parallel_processing": true
+    },
+    "ocr": {
+        "use_det": true,
+        "use_cls": false,
+        "use_rec": true,
+        "det_model_path": "models/ocr/det_model",
+        "rec_model_path": "models/ocr/rec_model",
+        "rec_batch_num": 6,
+        "det_db_thresh": 0.3,
+        "det_db_box_thresh": 0.5,
+        "rec_char_dict_path": "en_dict.txt",
+        "use_gpu_warmup": true,
+        "gpu_mem_strategy": "auto_growth"
+    },
+    "template_matching": {
+        "feature_extractor": "orb",
+        "max_features": 500,
+        "matching_algorithm": "flann",
+        "ransac_threshold": 5.0,
+        "min_match_count": 10,
+        "index_type": "lmdb",
+        "batch_size": 8
+    },
+    "classification": {
+        "confidence_threshold": 0.85,
+        "use_lightweight_model": true,
+        "feature_type": "hog",
+        "fallback_to_template_matching": true
+    },
+    "roi_mapping": {
+        "redundancy_factor": 1.5,
+        "priority_levels": 3,
+        "use_dynamic_adjustment": true,
+        "max_roi_per_document": 20
+    },
+    "extraction": {
+        "commercial_name_confidence_threshold": 0.95,
+        "other_fields_confidence_threshold": 0.90,
+        "use_verification": true,
+        "max_verification_attempts": 3
+    },
+    "special_cases": {
+        "detect_handwritten_notes": true,
+        "detect_stickers": true,
+        "handle_reflective_surfaces": true,
+        "handle_perspective_distortion": true,
+        "handle_multilingual": true,
+        "arabic_support": true
+    }
+}
